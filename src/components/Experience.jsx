@@ -24,7 +24,7 @@ const Experience = () => {
       rotation={[Math.PI / 8, Math.PI / 2, 0]}
     >
       <Stage environment="city" intensity={0.6} castShadow={false} shadows={false}>
-        <Suspense fallback={null}>
+       
           <Float
             speed={1.5}
             rotationIntensity={1}
@@ -33,7 +33,7 @@ const Experience = () => {
           >
             <BaseGun position={[0, -0.03, 0]} rotation={[-0.3, 0, 0]} scale={1} />
           </Float>
-        </Suspense>
+       
       </Stage>
 
       {/* 地面反射 */}

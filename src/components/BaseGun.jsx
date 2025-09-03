@@ -8,6 +8,8 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 import { useCustomization } from "../contexts/Customization";
 
+useGLTF.preload("/models/basegun.glb");
+
 export function BaseGun(props) {
   const { nodes, materials } = useGLTF("/models/basegun.glb");
   const frameOptic = useGLTF("/models/framemountedoptic.glb");
@@ -24,6 +26,8 @@ export function BaseGun(props) {
     opticType,
     thumbrestColor,
   } = useCustomization();
+
+
 
   return (
     <group {...props} dispose={null}>
@@ -144,4 +148,4 @@ export function BaseGun(props) {
   );
 }
 
-useGLTF.preload("/models/basegun.glb");
+
