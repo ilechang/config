@@ -4,6 +4,8 @@ import Experience from "./components/Experience";
 import Configurator from "./components/Configurator";
 import { CustomizationProvider } from "./contexts/Customization";
 
+import React, { Suspense } from "react";
+
 function App() {
   return (
     <CustomizationProvider>
