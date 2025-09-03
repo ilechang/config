@@ -1,5 +1,3 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./components/Experience";
@@ -10,11 +8,17 @@ function App() {
   return (
     <CustomizationProvider>
       <div className="App">
+        {/* 🔥 標題固定在畫面頂部 */}
+        <div className="title-overlay">
+        BUILD YOUR PISTOL
+        </div>
+
         <Canvas dpr={[1, 2]}>
           <color attach="background" args={["#213547"]} />
-          <fog attach="fog" args={["#213547", 10, 20]} />
+          <fog attach="fog" args={["#213547", 0.005, 1]} />
           <Experience />
         </Canvas>
+
         <Configurator />
       </div>
     </CustomizationProvider>

@@ -1,104 +1,42 @@
 import { createContext, useContext, useState } from "react";
 
-const chairColors = [
-  {
-    color: "#683434",
-    name: "brown",
-  },
-  {
-    color: "#1a5e1a",
-    name: "green",
-  },
-  {
-    color: "#659994",
-    name: "blue",
-  },
-  {
-    color: "#896599",
-    name: "mauve",
-  },
-  {
-    color: "#ffa500",
-    name: "orange",
-  },
-  {
-    color: "#59555b",
-    name: "grey",
-  },
-  {
-    color: "#222222",
-    name: "black",
-  },
-  {
-    color: "#ececec",
-    name: "white",
-  },
-];
+const CustomizationContext = createContext();
 
-const cushionColors = [
-  {
-    color: "#683434",
-    name: "brown",
-  },
-  {
-    color: "#1a5e1a",
-    name: "green",
-  },
-  {
-    color: "#659994",
-    name: "blue",
-  },
-  {
-    color: "#896599",
-    name: "mauve",
-  },
-  {
-    color: "#ffa500",
-    name: "orange",
-  },
-  {
-    color: "#59555b",
-    name: "grey",
-  },
-  {
-    color: "#222222",
-    name: "black",
-  },
-  {
-    color: "#ececec",
-    name: "white",
-  },
-];
+export const CustomizationProvider = ({ children }) => {
+  // 滑套顏色
+  const [slideColor, setSlideColor] = useState("black");
 
-const CustomizationContext = createContext({});
+  // Compensator 顏色 (none = 沒有)
+  const [compColor, setCompColor] = useState("none");
 
-export const CustomizationProvider = (props) => {
-  const [material, setMaterial] = useState("leather");
-  const [legs, setLegs] = useState(1);
-  const [chairColor, setChairColor] = useState(chairColors[0]);
-  const [cushionColor, setCushionColor] = useState(cushionColors[0]);
+  // Magwell 顏色 (none = 沒有)
+  const [magwellColor, setMagwellColor] = useState("none");
+
+  // Optic 類型 (none, frame, slide)
+  const [opticType, setOpticType] = useState("none");
+
+
+  // Magwell 顏色 (none = 沒有)
+  const [thumbrestColor, setThumbrestColor] = useState("none");
 
   return (
     <CustomizationContext.Provider
       value={{
-        material,
-        setMaterial,
-        legs,
-        setLegs,
-        chairColors,
-        chairColor,
-        setChairColor,
-        cushionColors,
-        cushionColor,
-        setCushionColor,
+        slideColor,
+        setSlideColor,
+        compColor,
+        setCompColor,
+        magwellColor,
+        setMagwellColor,
+        opticType,
+        setOpticType,
+        thumbrestColor,
+        setThumbrestColor
       }}
     >
-      {props.children}
+      {children}
     </CustomizationContext.Provider>
   );
 };
 
-export const useCustomization = () => {
-  const context = useContext(CustomizationContext);
-  return context;
-};
+export const useCustomization = () => useContext(CustomizationContext);

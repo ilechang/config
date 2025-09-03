@@ -2,92 +2,128 @@ import { useCustomization } from "../contexts/Customization";
 
 const Configurator = () => {
   const {
-    material,
-    setMaterial,
-    legs,
-    setLegs,
-    chairColors,
-    chairColor,
-    setChairColor,
-    cushionColors,
-    cushionColor,
-    setCushionColor,
+    slideColor,
+    setSlideColor,
+    compColor,
+    setCompColor,
+    magwellColor,
+    setMagwellColor,
+    opticType,
+    setOpticType,
+    thumbrestColor,
+    setThumbrestColor
   } = useCustomization();
 
   return (
     <div className="configurator">
+      {/* 區塊 1: 滑套顏色 */}
       <div className="configurator__section">
-        <div className="configurator__section__title">Chair material</div>
+        <div className="configurator__section__title">Slide Color</div>
         <div className="configurator__section__values">
-          <div
-            className={`item ${material === "leather" ? "item--active" : ""}`}
-            onClick={() => setMaterial("leather")}
-          >
-            <div className="item__label">Leather</div>
-          </div>
-          <div
-            className={`item ${material === "fabric" ? "item--active" : ""}`}
-            onClick={() => setMaterial("fabric")}
-          >
-            <div className="item__label">Fabric</div>
-          </div>
-        </div>
-      </div>
-      <div className="configurator__section">
-        <div className="configurator__section__title">Chair color</div>
-        <div className="configurator__section__values">
-          {chairColors.map((item, index) => (
+          {["black", "gold", "silver", "red"].map((color, index) => (
             <div
               key={index}
-              className={`item ${
-                item.color === chairColor.color ? "item--active" : ""
-              }`}
-              onClick={() => setChairColor(item)}
+              className={`item ${slideColor === color ? "item--active" : ""}`}
+              onClick={() => setSlideColor(color)}
             >
               <div
                 className="item__dot"
-                style={{ backgroundColor: item.color }}
+                style={{ backgroundColor: color }}
               />
-              <div className="item__label">{item.name}</div>
+              <div className="item__label">{color}</div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* 區塊 2: Compensator 顏色 */}
       <div className="configurator__section">
-        <div className="configurator__section__title">Cushion color</div>
+        <div className="configurator__section__title">Compensator</div>
         <div className="configurator__section__values">
-          {cushionColors.map((item, index) => (
+          {["none", "black", "gold", "silver", "red"].map((color, index) => (
             <div
               key={index}
-              className={`item ${
-                item.color === cushionColor.color ? "item--active" : ""
-              }`}
-              onClick={() => setCushionColor(item)}
+              className={`item ${compColor === color ? "item--active" : ""}`}
+              onClick={() => setCompColor(color)}
             >
-              <div
-                className="item__dot"
-                style={{ backgroundColor: item.color }}
-              />
-              <div className="item__label">{item.name}</div>
+              {/* 只有不是 none 才顯示圓形 */}
+              {color !== "none" && (
+                <div
+                  className="item__dot"
+                  style={{ backgroundColor: color }}
+                />
+              )}
+              <div className="item__label">{color}</div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* 區塊 3: Magwell 顏色 */}
       <div className="configurator__section">
-        <div className="configurator__section__title">Legs</div>
+        <div className="configurator__section__title">Flared Magwell</div>
         <div className="configurator__section__values">
-          <div
-            className={`item ${legs === 1 ? "item--active" : ""}`}
-            onClick={() => setLegs(1)}
-          >
-            <div className="item__label">Design</div>
-          </div>
-          <div
-            className={`item ${legs === 2 ? "item--active" : ""}`}
-            onClick={() => setLegs(2)}
-          >
-            <div className="item__label">Classic</div>
-          </div>
+          {["none", "gold", "silver", "red"].map((color, index) => (
+            <div
+              key={index}
+              className={`item ${magwellColor === color ? "item--active" : ""}`}
+              onClick={() => setMagwellColor(color)}
+            >
+              {/* 只有不是 none 才顯示圓形 */}
+              {color !== "none" && (
+                <div
+                  className="item__dot"
+                  style={{ backgroundColor: color }}
+                />
+              )}
+              <div className="item__label">{color}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+
+ <div className="configurator__section">
+        <div className="configurator__section__title">Thumb Rest</div>
+        <div className="configurator__section__values">
+          {["none", "gold", "silver", "red"].map((color, index) => (
+            <div
+              key={index}
+              className={`item ${thumbrestColor === color ? "item--active" : ""}`}
+              onClick={() => setThumbrestColor(color)}
+            >
+              {/* 只有不是 none 才顯示圓形 */}
+              {color !== "none" && (
+                <div
+                  className="item__dot"
+                  style={{ backgroundColor: color }}
+                />
+              )}
+              <div className="item__label">{color}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+      {/* 區塊 4: Optic */}
+      <div className="configurator__section">
+        <div className="configurator__section__title">Optic</div>
+        <div className="configurator__section__values">
+          {[
+            { key: "none", label: "None" },
+            { key: "frame", label: "Frame Mounted Optic" },
+            { key: "slide", label: "Slide Mounted Optic" },
+          ].map((opt, index) => (
+            <div
+              key={index}
+              className={`item ${opticType === opt.key ? "item--active" : ""}`}
+              onClick={() => setOpticType(opt.key)}
+            >
+              <div className="item__label">{opt.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
