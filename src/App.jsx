@@ -12,7 +12,7 @@ function App() {
       <div className="App">
         {/* 🔥 標題固定在畫面頂部 */}
         <div className="title-overlay">
-          BUILD YOUR PISTOL1
+          BUILD YOUR PISTOL2
         </div>
 
         <Canvas dpr={[1, 2]}>

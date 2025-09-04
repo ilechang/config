@@ -13,7 +13,7 @@ import {
   Stage,
   Float,
 } from "@react-three/drei";
-import { BaseGun } from "./BaseGun";
+import { BaseGun1 } from "./BaseGun1";
 
 const Experience = () => {
   return (
@@ -31,7 +31,7 @@ const Experience = () => {
             floatIntensity={1}
             floatingRange={[0, 0.01]}
           >
-            <BaseGun position={[0, -0.03, 0]} rotation={[-0.3, 0, 0]} scale={1} />
+            <BaseGun1 position={[0, -0.03, 0]} rotation={[-0.3, 0, 0]} scale={1} />
           </Float>
        
       </Stage>
