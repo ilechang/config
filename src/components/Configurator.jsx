@@ -43,6 +43,21 @@ const Configurator = () => {
 
   return (
     <div className="configurator">
+      <p
+       className="border-bottom pb-4"
+        style={{
+          color: "#fff",
+          fontSize: "16px",
+          marginBottom: "1rem",
+          maxWidth: "100%",       // 不會超出容器
+          wordWrap: "break-word", // 長字自動換行
+          wordBreak: "break-word",
+          textAlign: "center",
+        }}
+      >
+        Customize your pistol by selecting different colors and attachments below.
+        Choose from slide finishes, compensators, and magwells to build your unique setup.
+      </p>
       {/* 區塊 1: Slide Color */}
       <div className="configurator__section">
         <div className="configurator__section__title">Slide Color</div>
@@ -71,8 +86,8 @@ const Configurator = () => {
         </div>
         <button onClick={() => setShowComp(!showComp)} className="learn-more">
           {showComp ? "Hide" : "Learn more"}
-        </button>       
-         {showComp && <p className="description">{compDescription}</p>}
+        </button>
+        {showComp && <p className="description">{compDescription}</p>}
 
         <div className="configurator__section__values">
           {compOptions.map((color, index) => (

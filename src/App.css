@@ -31,20 +31,33 @@ canvas {
 .configurator {
   position: fixed;
   right: 24px;
-  top: 20%;
+  top: 25%;
   width: 360px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   background: rgba(0, 0, 0, 0.4);
-  max-height: 70vh;
-  /* 避免太長 */
-  overflow-y: auto;
-  /* 垂直捲動 */
-  scrollbar-width: thin;
-  /* FireFox 美化 */
+  max-height: 65vh; /* 避免太長 */
+  overflow-y: auto; /* 垂直捲動 */
+  scrollbar-width: thin; /* FireFox 美化 */
   z-index: 10;
+
+  /* 白色陰影 + 動畫 */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
 }
 
 .configurator__section__title {
@@ -152,26 +165,21 @@ canvas {
   }
 }
 
-/* --- Title Overlay (所有螢幕通用: 靠上 + 水平置中) --- */
 .title-overlay {
   position: absolute;
-  top: 6%;
-  /* 靠上 */
-  left: 50%;
-  /* 水平置中 */
+  top: 6%; /* 靠上 */
+  left: 50%; /* 水平置中 */
   transform: translateX(-50%);
-  /* 修正置中 */
   font-size: 40px;
   font-weight: bold;
-  color: white;
   text-align: center;
   font-family: "Poppins", sans-serif;
   line-height: 1.2;
   z-index: 10;
-  white-space: nowrap;
-  /* 防止換行 */
-}
+  white-space: nowrap; /* 防止換行 */
 
+ color:white
+}
 
 
 /* 小螢幕 (<768px) 預設在 base style 定義，例如 20px */
@@ -313,4 +321,18 @@ canvas {
   .magwell-img {
     width: 120px;
   }
+}
+
+
+
+.title-subtext {
+  position: absolute;
+  top: 12%; /* 放在主標題下方 */
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4;
 }
