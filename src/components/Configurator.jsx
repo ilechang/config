@@ -44,7 +44,7 @@ const Configurator = () => {
   return (
     <div className="configurator">
       <p
-       className="border-bottom pb-4"
+        className="border-bottom pb-4"
         style={{
           color: "#fff",
           fontSize: "16px",
@@ -55,8 +55,8 @@ const Configurator = () => {
           textAlign: "center",
         }}
       >
-        Customize your pistol by selecting different colors and attachments below.
-        Choose from slide finishes, compensators, and magwells to build your unique setup.
+        This demo showcases a pistol configurator. Choose colors and attachments
+        to personalize your build.
       </p>
       {/* 區塊 1: Slide Color */}
       <div className="configurator__section">

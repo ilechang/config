@@ -11,10 +11,10 @@ function App() {
     <CustomizationProvider>
       <div className="App">
         <div className="title-overlay">
-          BUILD YOUR PISTOL5
+          Customize Your Pistol
         </div>
 
-    
+
         {/* 外層加一個 Suspense 包 Canvas */}
         <Suspense
           fallback={
@@ -24,7 +24,7 @@ function App() {
             </div>
           }
         >
-          <Canvas dpr={[1, 2]}>
+          <Canvas dpr={[1, 2]} >
             <color attach="background" args={["#213547"]} />
             <fog attach="fog" args={["#213547", 0.5, 3]} />
             <Experience />
