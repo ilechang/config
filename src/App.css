@@ -1,9 +1,10 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden !important; /* ✅ 禁止水平滑動 */
+  overflow-x: hidden !important; /* 禁止水平滑動 */
 }
 
 .App {
@@ -20,23 +21,26 @@ html, body {
 
 canvas {
   display: block;
-  width: 100% !important;  /* ✅ 保證不超出 */
+  width: 100% !important;
   height: 100vh !important;
   max-width: 100%;
 }
 
-/* --- Configurator 基本樣式 --- */
+/* --- Configurator 基本樣式 (桌機) --- */
 .configurator {
   position: fixed;
   right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 20%;
   width: 360px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   background: rgba(0, 0, 0, 0.4);
+  max-height: 60vh;       /* 避免太長 */
+  overflow-y: auto;       /* 垂直捲動 */
+  scrollbar-width: thin;  /* FireFox 美化 */
+  z-index: 10;
 }
 
 .configurator__section__title {
@@ -98,29 +102,30 @@ canvas {
   color: white;
 }
 
-/* --- 中螢幕 (<=1030px) → Canvas 下方，一行兩個區塊 --- */
+/* --- 中/小螢幕 (<=1030px) → Configurator 貼底佔 40% 高度 --- */
 @media (max-width: 1030px) {
   .configurator {
-    position: absolute;
-    left: 0;         /* ✅ 靠左 */
-    right: 0;        /* ✅ 靠右 */
-    transform: none; /* ✅ 移除 translate */
-    top: 75vh;
-    bottom: auto;
-    width: 100%;     /* ✅ 滿版 */
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;               /* 🚀 永遠貼底 */
+    width: 100%;
+    height: 30vh;            /* 🚀 固定佔螢幕 40% */
     padding: 16px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
 
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 16px;
+
+    overflow-y: auto;        /* 🚀 可垂直捲動 */
+    z-index: 10;
   }
 
   .configurator__section {
-    flex: 1 1 calc(50% - 20px); /* ✅ 一行兩個區塊 */
-    min-width: 220px;
+    flex: 1 1 100%; /* 滿版一行一個 */
+    min-width: auto;
     text-align: center;
   }
 
@@ -130,54 +135,66 @@ canvas {
     flex-wrap: wrap;
     gap: 16px;
   }
-}
 
-/* --- 手機 / 小螢幕 (<=768px) → 每行一個區塊，放最底下 --- */
-@media (max-width: 768px) {
-  .configurator {
-    position: relative;
-    left: 0;
-    right: 0;
-    top: auto;
-    bottom: 0;
-    transform: none;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-  }
-
-  .configurator__section {
-    flex: 1 1 100%; /* ✅ 滿版一行一個 */
-    min-width: auto;
+  /* 🚀 Title 在中/小螢幕靠上 + 水平置中 */
+  .title-overlay {
+    font-size: 28px;
   }
 }
 
-
+/* --- Title Overlay (所有螢幕通用: 靠上 + 水平置中) --- */
 .title-overlay {
   position: absolute;
-  top: 6%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 50px; /* 預設字體大小 */
+  top: 6%;                     /* 靠上 */
+  left: 50%;                   /* 水平置中 */
+  transform: translateX(-50%); /* 修正置中 */
+  font-size: 40px;
   font-weight: bold;
   color: white;
   text-align: center;
   font-family: "Poppins", sans-serif;
   line-height: 1.2;
-  z-index: 10; /* ✅ 確保在 Canvas 上方 */
+  z-index: 10;
+  white-space: nowrap;          /* 防止換行 */
 }
 
-/* 中螢幕 (>= 1030px) → 放大 */
-@media (min-width: 1030px) {
+
+
+/* 小螢幕 (<768px) 預設在 base style 定義，例如 20px */
+
+/* 中小螢幕 (768px ~ 1029px) */
+@media (min-width: 200px) and (max-width: 800px) {
   .title-overlay {
-    font-size: 60px;
+    font-size: 30px;
   }
 }
 
-/* 超大螢幕 (>= 1600px) → 更大 */
+/* 桌機 (1030px ~ 1599px) */
+@media (min-width: 760px) and (max-width: 1300px) {
+  .title-overlay {
+    font-size: 58px;
+  }
+}
+
+/* 桌機 (1030px ~ 1599px) */
+@media (min-width: 1031px) and (max-width: 1599px) {
+  .title-overlay {
+    font-size: 58px;
+  }
+}
+
+/* 超大螢幕 (>=1600px) */
 @media (min-width: 1600px) {
   .title-overlay {
     font-size: 80px;
   }
+}
+/* --- 捲軸美化 --- */
+.configurator::-webkit-scrollbar {
+  width: 6px;
+}
+
+.configurator::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
 }

@@ -84,7 +84,7 @@ const Configurator = () => {
 
 
 
- <div className="configurator__section">
+      <div className="configurator__section">
         <div className="configurator__section__title">Thumb Rest</div>
         <div className="configurator__section__values">
           {["none", "gold", "silver", "red"].map((color, index) => (

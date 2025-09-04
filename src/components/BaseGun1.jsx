@@ -26,7 +26,8 @@ export function BaseGun1(props) {
     opticType === "slide" ? useGLTF("/models/rmr.glb") : null;
 
   return (
-    <group {...props} dispose={null}>
+    <group {...props} dispose={null}
+    >
       {/* ----- Basegun 主體 (完整保留) ----- */}
       {nodes.Mesh_11 && (
         <group
