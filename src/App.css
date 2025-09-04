@@ -111,7 +111,7 @@ canvas {
     top: auto;
     bottom: 0;               /* 🚀 永遠貼底 */
     width: 100%;
-    height: 30vh;            /* 🚀 固定佔螢幕 40% */
+    height: 32vh;            /* 🚀 固定佔螢幕 40% */
     padding: 16px;
     background: rgba(0, 0, 0, 0.7);
 

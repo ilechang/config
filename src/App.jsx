@@ -12,12 +12,12 @@ function App() {
       <div className="App">
         {/* 🔥 標題固定在畫面頂部 */}
         <div className="title-overlay">
-          BUILD YOUR PISTOL2
+          BUILD YOUR PISTOL3
         </div>
 
         <Canvas dpr={[1, 2]}>
           <color attach="background" args={["#213547"]} />
-          <fog attach="fog" args={["#213547", 0.005, 1]} />
+          <fog attach="fog" args={["#213547", 0.5, 3]} />
            <Suspense fallback={null}>
                 <Experience />
               </Suspense>
