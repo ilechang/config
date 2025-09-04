@@ -11,6 +11,7 @@ const opticOptions = [
   { key: "slide", label: "Slide Mount" },
 ];
 
+
 // 描述文字
 const compDescription =
   "On an airsoft gun, the compensator is not only for aesthetics — it also allows for an extended inner barrel length (up to one inch), enhancing accuracy and shot consistency.";
@@ -22,6 +23,7 @@ const opticDescription =
   "Mounting a red dot sight on a handgun can improve target acquisition speed and enhance overall shooting accuracy.";
 
 const Configurator = () => {
+
   const {
     slideColor,
     setSlideColor,
@@ -34,6 +36,16 @@ const Configurator = () => {
     opticType,
     setOpticType,
   } = useCustomization();
+
+  
+const handleClearAll = () => {
+  setSlideColor("black");     // 初始滑套顏色
+  setCompColor("none");       // 沒有補償器
+  setMagwellColor("none");    // 沒有彈匣槽
+  setThumbrestColor("none");  // 沒有拇指托
+  setOpticType("none");       // 沒有光學瞄具
+};
+
 
   // 控制 Learn More 展開
   const [showComp, setShowComp] = useState(false);
@@ -60,7 +72,7 @@ const Configurator = () => {
       </p>
       {/* 區塊 1: Slide Color */}
       <div className="configurator__section">
-        <div className="configurator__section__title">Slide Color</div>
+        <div className="configurator__section__title text-center" >Slide Color</div>
         <div className="configurator__section__values">
           {slideOptions.map((color, index) => (
             <div
@@ -199,6 +211,12 @@ const Configurator = () => {
 
 
       </div>
+      {/* 區塊 6: Clear All */}
+<div className="configurator__section text-center border-0 rounded-0 mb-0">
+  <button onClick={handleClearAll} className="clear-all-btn">
+    Clear All
+  </button>
+</div>
     </div>
   );
 };

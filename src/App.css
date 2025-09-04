@@ -336,3 +336,22 @@ font-size: 25px;
   text-align: center;
   line-height: 1.4;
 }
+
+
+
+
+.clear-all-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  border-radius: 0;
+}
+
+.clear-all-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
