@@ -71,7 +71,7 @@ const Configurator = () => {
         to personalize your build.
       </p>
       {/* 區塊 1: Slide Color */}
-      <div className="configurator__section">
+      <div className="configurator__section my-0 pt-0">
         <div className="configurator__section__title text-center" >Slide Color</div>
         <div className="configurator__section__values">
           {slideOptions.map((color, index) => (
@@ -90,48 +90,61 @@ const Configurator = () => {
         </div>
       </div>
 
-      <div className="configurator__section__values">
-      <div className="d-flex justify-content-center align-items-center mx-auto">
-          <div className="configurator__section__title">Compenstaor</div>
-          <img src="./comp.webp" alt="Compensator" className="img-fluid" style={{ maxWidth: "100px" }} />
+      {/* 區塊 2: Compensator */}
+      <div className="configurator__section my-0 pt-0">
+        <div className="d-flex justify-content-center align-items-center mx-auto">
+          <div className="configurator__section__title">Compensator</div>
+          <img
+            src="./comp.webp"
+            alt="Compensator"
+            className="img-fluid"
+            style={{ maxWidth: "100px" }}
+          />
         </div>
-        {compOptions.map((color, index) => (
-          <div
-            key={index}
-            className={`item ${compColor === color ? "item--active" : ""}`}
-            onClick={() => setCompColor(color)}
-          >
-            {color === "none" ? (
-              // ⬇️ None 用叉叉
-              <div
-                className="item__dot"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#222", // 深色背景
-                  color: "#fff",
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                }}
-              >
-                ×
-              </div>
-            ) : (
-              // ⬇️ 其他顏色用實心圓
-              <div
-                className="item__dot"
-                style={{ backgroundColor: color }}
-              />
-            )}
-            <div className="item__label">{color}</div>
-          </div>
-        ))}
+
+        <button onClick={() => setShowComp(!showComp)} className="learn-more">
+          {showComp ? "Hide" : "Learn more"}
+        </button>
+
+        {showComp && <p className="description">{compDescription}</p>}
+
+        <div className="configurator__section__values">
+          {compOptions.map((color, index) => (
+            <div
+              key={index}
+              className={`item ${compColor === color ? "item--active" : ""}`}
+              onClick={() => setCompColor(color)}
+            >
+              {color === "none" ? (
+                // ⬇️ None 用叉叉
+                <div
+                  className="item__dot"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "#222",
+                    color: "#fff",
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  ×
+                </div>
+              ) : (
+                // ⬇️ 其他顏色用實心圓
+                <div className="item__dot" style={{ backgroundColor: color }} />
+              )}
+              <div className="item__label">{color}</div>
+            </div>
+          ))}
+        </div>
       </div>
 
 
+
       {/* 區塊 3: Magwell */}
-      <div className="configurator__section">
+      <div className="configurator__section my-0 pt-0">
         <div className="d-flex justify-content-center align-items-center mx-auto">
           <div className="configurator__section__title">Flared Magwell</div>
           <img src="./magwell.webp" alt="Compensator" className="img-fluid" style={{ maxWidth: "100px" }} />
@@ -180,7 +193,7 @@ const Configurator = () => {
 
 
       {/* 區塊 4: Thumb Rest */}
-      <div className="configurator__section">
+      <div className="configurator__section my-0 pt-0">
 
         <div className="d-flex justify-content-center align-items-center mx-auto">
           <div className="configurator__section__title">Thumb Rest</div>
@@ -255,7 +268,7 @@ const Configurator = () => {
           {opticOptions.map((opt, index) => (
             <button
               key={index}
-              style={{ fontSize: "12px" }}  
+              style={{ fontSize: "12px" }}
               className={`btn ${opticType === opt.key ? "btn-light rounded-0" : "btn-outline-light rounded-0"
                 }`}
               onClick={() => setOpticType(opt.key)}
@@ -264,17 +277,17 @@ const Configurator = () => {
             </button>
           ))}
         </div>
-     
 
 
 
-    </div>
-      {/* 區塊 6: Clear All */ }
-  <div className="configurator__section text-center border-0 rounded-0 mb-0">
-    <button onClick={handleClearAll} className="clear-all-btn">
-      Clear All
-    </button>
-  </div>
+
+      </div>
+      {/* 區塊 6: Clear All */}
+      <div className="configurator__section text-center border-0 rounded-0 mb-0">
+        <button onClick={handleClearAll} className="clear-all-btn">
+          Clear All
+        </button>
+      </div>
     </div >
   );
 };
