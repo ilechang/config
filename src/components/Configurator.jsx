@@ -91,6 +91,10 @@ const Configurator = () => {
       </div>
 
       <div className="configurator__section__values">
+      <div className="d-flex justify-content-center align-items-center mx-auto">
+          <div className="configurator__section__title">Compenstaor</div>
+          <img src="./comp.webp" alt="Compensator" className="img-fluid" style={{ maxWidth: "100px" }} />
+        </div>
         {compOptions.map((color, index) => (
           <div
             key={index}
