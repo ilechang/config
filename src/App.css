@@ -4,7 +4,8 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden !important; /* 禁止水平滑動 */
+  overflow-x: hidden !important;
+  /* 禁止水平滑動 */
 }
 
 .App {
@@ -37,9 +38,12 @@ canvas {
   flex-direction: column;
   gap: 16px;
   background: rgba(0, 0, 0, 0.4);
-  max-height: 60vh;       /* 避免太長 */
-  overflow-y: auto;       /* 垂直捲動 */
-  scrollbar-width: thin;  /* FireFox 美化 */
+  max-height: 70vh;
+  /* 避免太長 */
+  overflow-y: auto;
+  /* 垂直捲動 */
+  scrollbar-width: thin;
+  /* FireFox 美化 */
   z-index: 10;
 }
 
@@ -90,12 +94,14 @@ canvas {
 
 /* active 狀態 */
 .item.item--active {
-  transform: scale(1.2);
+
   z-index: 2;
 }
 
 .item.item--active .item__dot {
   border: solid 2px white;
+  margin-bottom: 6px;
+  box-shadow: 0 0 8px 2px #fff;
 }
 
 .item.item--active .item__label {
@@ -109,9 +115,11 @@ canvas {
     left: 0;
     right: 0;
     top: auto;
-    bottom: 0;               /* 🚀 永遠貼底 */
+    bottom: 0;
+    /* 🚀 永遠貼底 */
     width: 100%;
-    height: 32vh;            /* 🚀 固定佔螢幕 40% */
+    height: 32vh;
+    /* 🚀 固定佔螢幕 40% */
     padding: 16px;
     background: rgba(0, 0, 0, 0.7);
 
@@ -119,12 +127,14 @@ canvas {
     flex-direction: column;
     gap: 16px;
 
-    overflow-y: auto;        /* 🚀 可垂直捲動 */
+    overflow-y: auto;
+    /* 🚀 可垂直捲動 */
     z-index: 10;
   }
 
   .configurator__section {
-    flex: 1 1 100%; /* 滿版一行一個 */
+    flex: 1 1 100%;
+    /* 滿版一行一個 */
     min-width: auto;
     text-align: center;
   }
@@ -145,9 +155,12 @@ canvas {
 /* --- Title Overlay (所有螢幕通用: 靠上 + 水平置中) --- */
 .title-overlay {
   position: absolute;
-  top: 6%;                     /* 靠上 */
-  left: 50%;                   /* 水平置中 */
-  transform: translateX(-50%); /* 修正置中 */
+  top: 6%;
+  /* 靠上 */
+  left: 50%;
+  /* 水平置中 */
+  transform: translateX(-50%);
+  /* 修正置中 */
   font-size: 40px;
   font-weight: bold;
   color: white;
@@ -155,7 +168,8 @@ canvas {
   font-family: "Poppins", sans-serif;
   line-height: 1.2;
   z-index: 10;
-  white-space: nowrap;          /* 防止換行 */
+  white-space: nowrap;
+  /* 防止換行 */
 }
 
 
@@ -189,6 +203,7 @@ canvas {
     font-size: 80px;
   }
 }
+
 /* --- 捲軸美化 --- */
 .configurator::-webkit-scrollbar {
   width: 6px;
@@ -232,5 +247,70 @@ canvas {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+/* Section 邊框底線 */
+.configurator__section {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+/* Learn more 按鈕 */
+.learn-more {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 0;
+  transition: all 0.2s ease;
+
+  display: block;
+  /* 讓按鈕變成 block */
+  margin: 5px auto 5px auto;
+}
+
+.learn-more:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 顯示的描述文字 */
+.description {
+  color: #fff;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+
+
+
+
+
+
+.magwell-img {
+  display: block;
+  margin: 0 auto;
+  /* 置中 */
+  width: 150px;
+  /* 預設大螢幕 */
+}
+
+/* 中螢幕 768px ~ 1030px */
+@media (max-width: 1030px) and (min-width: 768px) {
+  .magwell-img {
+    width: 150px;
+  }
+}
+
+/* 小螢幕 < 768px */
+@media (max-width: 767px) {
+  .magwell-img {
+    width: 120px;
   }
 }

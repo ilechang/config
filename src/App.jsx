@@ -11,7 +11,7 @@ function App() {
     <CustomizationProvider>
       <div className="App">
         {/* 🔥 標題固定在畫面頂部 */}
-        <div className="title-overlay">BUILD YOUR PISTOL4</div>
+        <div className="title-overlay">BUILD YOUR PISTOL5</div>
 
         {/* 外層加一個 Suspense 包 Canvas */}
         <Suspense
