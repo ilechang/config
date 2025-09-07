@@ -102,11 +102,7 @@ const Configurator = () => {
           />
         </div>
 
-        <button onClick={() => setShowComp(!showComp)} className="learn-more">
-          {showComp ? "Hide" : "Learn more"}
-        </button>
 
-        {showComp && <p className="description">{compDescription}</p>}
 
         <div className="configurator__section__values">
           {compOptions.map((color, index) => (
@@ -139,6 +135,12 @@ const Configurator = () => {
             </div>
           ))}
         </div>
+
+        <button onClick={() => setShowComp(!showComp)} className="learn-more mt-3">
+          {showComp ? "Hide▲" : "Learn more▼"}
+        </button>
+
+        {showComp && <p className="description">{compDescription}</p>}
       </div>
 
 
@@ -149,10 +151,7 @@ const Configurator = () => {
           <div className="configurator__section__title">Flared Magwell</div>
           <img src="./magwell.webp" alt="Compensator" className="img-fluid" style={{ maxWidth: "100px" }} />
         </div>
-        <button onClick={() => setShowMagwell(!showMagwell)} className="learn-more">
-          {showMagwell ? "Hide" : "Learn more"}
-        </button>
-        {showMagwell && <p className="description">{magwellDescription}</p>}
+
         <div className="configurator__section__values">
           {magwellOptions.map((color, index) => (
             <div
@@ -186,23 +185,30 @@ const Configurator = () => {
               <div className="item__label">{color}</div>
             </div>
           ))}
+
+
+
         </div>
 
-
+        <button onClick={() => setShowMagwell(!showMagwell)} className="learn-more mt-3">
+          {showMagwell ? "Hide▲" : "Learn more▼"}
+        </button>
+        {showMagwell && <p className="description">{magwellDescription}</p>}
       </div>
 
 
       {/* 區塊 4: Thumb Rest */}
       <div className="configurator__section my-0 pt-0">
-
         <div className="d-flex justify-content-center align-items-center mx-auto">
           <div className="configurator__section__title">Thumb Rest</div>
-          <img src="./rest.webp" alt="Compensator" className="img-fluid" style={{ maxWidth: "100px" }} />
+          <img
+            src="./rest.webp"
+            alt="Thumb Rest"
+            className="img-fluid"
+            style={{ maxWidth: "100px" }}
+          />
         </div>
-        <button onClick={() => setShowThumbrest(!showThumbrest)} className="learn-more">
-          {showThumbrest ? "Hide" : "Learn more"}
-        </button>
-        {showThumbrest && <p className="description">{thumbrestDescription}</p>}
+
         <div className="configurator__section__values">
           {thumbrestOptions.map((color, index) => (
             <div
@@ -211,14 +217,13 @@ const Configurator = () => {
               onClick={() => setThumbrestColor(color)}
             >
               {color === "none" ? (
-                // ⬇️ None 用叉叉
                 <div
                   className="item__dot"
                   style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    backgroundColor: "#222", // 深色背景
+                    backgroundColor: "#222",
                     color: "#fff",
                     fontSize: "12px",
                     fontWeight: "bold",
@@ -227,11 +232,7 @@ const Configurator = () => {
                   ×
                 </div>
               ) : (
-                // ⬇️ 其他顏色用實心圓
-                <div
-                  className="item__dot"
-                  style={{ backgroundColor: color }}
-                />
+                <div className="item__dot" style={{ backgroundColor: color }} />
               )}
               <div className="item__label">{color}</div>
             </div>
@@ -239,12 +240,21 @@ const Configurator = () => {
         </div>
 
 
+        <button onClick={() => setShowThumbrest(!showThumbrest)} className="learn-more mt-3">
+          {showThumbrest ? "Hide ▲" : "Learn more ▼"}
+        </button>
+
+        {showThumbrest && <p className="description">{thumbrestDescription}</p>}
+
+
+
       </div>
+
+
+
 
       {/* 區塊 5: Optic */}
       <div className="configurator__section">
-
-        {/* 標題 + 圖片 */}
         <div className="d-flex justify-content-center align-items-center mx-auto mb-2">
           <div className="configurator__section__title me-2">Optic Mount</div>
           <img
@@ -255,21 +265,16 @@ const Configurator = () => {
           />
         </div>
 
-        {/* Learn more 按鈕 */}
-        <button onClick={() => setShowOptic(!showOptic)} className="learn-more">
-          {showOptic ? "Hide" : "Learn more"}
-        </button>
 
-        {/* 說明文字 */}
-        {showOptic && <p className="description">{opticDescription}</p>}
 
-        {/* 選項按鈕 */}
         <div className="configurator__section__values d-flex flex-wrap gap-2 mt-2">
           {opticOptions.map((opt, index) => (
             <button
               key={index}
               style={{ fontSize: "12px" }}
-              className={`btn ${opticType === opt.key ? "btn-light rounded-0" : "btn-outline-light rounded-0"
+              className={`btn ${opticType === opt.key
+                  ? "btn-light rounded-0"
+                  : "btn-outline-light rounded-0"
                 }`}
               onClick={() => setOpticType(opt.key)}
             >
@@ -277,11 +282,15 @@ const Configurator = () => {
             </button>
           ))}
         </div>
+        <button onClick={() => setShowOptic(!showOptic)} className="learn-more mt-3">
+          {showOptic ? "Hide ▲" : "Learn more ▼"}
+        </button>
 
-
-
-
+        {showOptic && <p className="description">{opticDescription}</p>}
       </div>
+
+
+
       {/* 區塊 6: Clear All */}
       <div className="configurator__section text-center border-0 rounded-0 mb-0">
         <button onClick={handleClearAll} className="clear-all-btn">
